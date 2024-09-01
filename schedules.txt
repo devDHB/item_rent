@@ -1,0 +1,129 @@
+# Installed tool
+black
+Pillow
+Ipython
+djangorestframework
+React.js
+Chakra UI
+
+
+
+# App 
+ㅁ common - 공통 모델 사용
+ㅁ users - 커스텀 유저 앱
+ㅁ items
+ㅁ medias
+ㅁ reviews
+ㅁ bookings
+ㅁ chattings
+ㅁ wishlists
+
+
+
+ㅁ common App 
+
+※ Model 
+- Common
+created_at - DateTimeField(auto_now_add=True)
+updated_at - DateTimeField(auto_now=True)
+
+
+
+ㅁ users App
+
+※ Model
+- User
+name - Charfield
+is_host - Booleanfield
+avatar - URLfield
+gender - Charfield(choices)
+languague - Charfield(choices)
+rating() - rating average
+
+※ API URL
+GET PUT /me
+POST /users
+GET /users/username
+POST /users/change-password
+POST /users/log-in
+POST /users/log-out
+
+
+ㅁ items App
+
+※ Model
+- Item
+name - Charfield
+price - PositiveIntegerField
+description - TextField
+region - CharField
+owner - ForeignKey -> to:users.User
+
+※ API URL
+GET POST /items
+GET PUT DELETE /items/pk
+GET /items/pk/reviews
+GET POST /items/pk/bookings
+GET POST DELETE /items/pk/bookings/pk
+
+
+
+ㅁ reviews App
+
+※ Model
+- Review
+user - ForeignKey -> to:users.User
+item - ForeignKey -> to:items.Item
+content - TextField
+rating - PositiveIntegerField
+
+
+
+ㅁ wishlists App
+
+※ Model
+- Wishlist
+name - CharField
+items - ManyToManyField -> to:items.Item
+user - ForeignKey -> to:users.User
+
+※ API URL
+GET POST /wishlists
+GET PUT DELETE /wishlists/pk
+PUT /wishlists/pk/items
+is_like - 좋아요
+
+
+ㅁ bookings App
+
+※ Model
+- Booking
+user - ForeignKey -> to:users.User
+item - ForeignKey -> to:items.Item
+pick_up_day - DateField
+return_day - DateField
+
+
+
+ㅁ midias App
+
+※ Model
+- Photo
+file - URLfield
+description - CharField
+item - ForeignKey -> to:items.Item
+
+
+
+ㅁ chattings App
+
+※ Model
+- ChattingRoom
+users - ManyToManyField -> to:users.User
+
+- Message
+text - TextField
+user - ForeignKey -> to:users.User
+chatting_room - ForeignKey -> to:users.User
+
+ 

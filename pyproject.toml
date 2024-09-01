@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "item-rent"
+version = "0.1.0"
+description = ""
+authors = ["doo <myownlife323@nate.com>"]
+readme = "README.md"
+packages = [{include = "item_rent"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.1.7"
+pillow = "^9.4.0"
+ipython = "^8.10.0"
+djangorestframework = "^3.14.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
